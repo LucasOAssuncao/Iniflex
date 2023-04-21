@@ -1,0 +1,19 @@
+# Arquivos compilados
+*.class
+
+# Arquivos JAR
+*.jar
+
+# Diretórios de build
+bin/
+target/
+
+# Logs e arquivos temporários
+log/
+temp/
+*.log
+*.tmp
+
+# Arquivos IDE
+.idea/
+*.iml
