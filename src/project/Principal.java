@@ -4,6 +4,8 @@ import entities.Funcionario;
 import enums.roles;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Principal {
   public static void main(String[] args) {
@@ -34,6 +36,21 @@ public class Principal {
 
     printEmployees(funcionarios);
     System.out.println();
+
+    System.out.println(
+        "3.4");
+    for (Funcionario funcionario : funcionarios) {
+      funcionario.raiseSalary();
+      System.out.println(funcionario);
+    }
+
+    System.out.println();
+
+    Map<String, List<Funcionario>> sortByRole =
+        funcionarios.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
+
+    System.out.println();
+
   }
 
   public static List<Funcionario> removeEmployee(List<Funcionario> funcionarios, String nome) {
