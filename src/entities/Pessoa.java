@@ -11,6 +11,9 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
+    public Pessoa(String nome2, int idade, String endereco) {
+    }
+
     public String getNome() {
         return nome;
     }
