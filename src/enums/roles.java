@@ -1,0 +1,5 @@
+package enums;
+
+public enum roles {
+  OPERADOR, COORDENADOR, DIRETOR, RECEPCIONISTA, CONTADOR, ELETRICISTA, GERENTE
+}
