@@ -82,6 +82,15 @@ public class Principal {
         .println("Nome: " + oldest.getNome() + ", Idade: " + oldest.getAge() + " anos.");
 
     System.out.println();
+
+    List<Funcionario> orderedList =
+        funcionarios.stream().sorted((arg0, arg1) -> arg0.getNome().compareTo(arg1.getNome()))
+            .collect(Collectors.toList());
+
+    System.out.println("3.10");
+    printEmployees(orderedList);
+
+    System.out.println();
   }
 
   public static List<Funcionario> removeEmployee(List<Funcionario> funcionarios, String nome) {
