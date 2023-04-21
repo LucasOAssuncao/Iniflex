@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Principal {
   public static void main(String[] args) {
@@ -46,11 +48,40 @@ public class Principal {
 
     System.out.println();
 
+    //3.5
     Map<String, List<Funcionario>> sortByRole =
         funcionarios.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
 
     System.out.println();
 
+    System.out.println("3.6");
+    System.out.println(sortByRole.entrySet());
+
+    System.out.println();
+
+    System.out.println("3.8");
+    System.out
+        .println(
+            funcionarios.stream()
+                .filter(s -> s.getDataNascimento().getMonth().getValue() == 10
+                    || s.getDataNascimento().getMonth().getValue() == 12)
+                .collect(Collectors.toList()));
+
+    System.out.println();
+
+    System.out.println(
+        "3.9");
+
+    Comparator<Funcionario> comparator =
+        (func1, func2) -> func1.getDataNascimento().compareTo(func2.getDataNascimento());
+
+    Collections.sort(funcionarios, comparator);
+
+    Funcionario oldest = funcionarios.get(0);
+    System.out
+        .println("Nome: " + oldest.getNome() + ", Idade: " + oldest.getAge() + " anos.");
+
+    System.out.println();
   }
 
   public static List<Funcionario> removeEmployee(List<Funcionario> funcionarios, String nome) {
