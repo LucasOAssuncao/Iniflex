@@ -1,5 +1,7 @@
 package entities;
+
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 
 public class Funcionario extends Pessoa {
@@ -30,5 +32,9 @@ public class Funcionario extends Pessoa {
 
     public void raiseSalary() {
         this.salario = salario.add(BigDecimal.valueOf(0.1 * salario.doubleValue()));
-      }
+    }
+
+    public static String formatSalary(BigDecimal salario) {
+        return NumberFormat.getCurrencyInstance().format(salario);
+    }
 }

@@ -2,6 +2,8 @@ package project;
 
 import entities.Funcionario;
 import enums.roles;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -91,6 +93,12 @@ public class Principal {
     printEmployees(orderedList);
 
     System.out.println();
+
+    BigDecimal salariesSum =
+        funcionarios.stream().map(Funcionario::getSalario).reduce(BigDecimal.ZERO, BigDecimal::add);
+
+    System.out.println("3.11");
+    System.out.println(Funcionario.formatSalary(salariesSum) + "\n");
   }
 
   public static List<Funcionario> removeEmployee(List<Funcionario> funcionarios, String nome) {
