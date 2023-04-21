@@ -14,7 +14,7 @@ import java.util.Comparator;
 public class Principal {
   public static void main(String[] args) {
     List<Funcionario> funcionarios = new ArrayList<>();
-
+    final BigDecimal minimumWage = BigDecimal.valueOf(1212.00);
     Funcionario maria = new Funcionario("Maria", 2000, 10, 18, 2009.44, roles.OPERADOR.toString());
     Funcionario joao = new Funcionario("João", 1990, 5, 12, 2284.38, roles.OPERADOR.toString());
 
@@ -50,9 +50,9 @@ public class Principal {
 
     System.out.println();
 
-    //3.5
-    Map<String, List<Funcionario>> sortByRole =
-        funcionarios.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
+    // 3.5
+    Map<String, List<Funcionario>> sortByRole = funcionarios.stream()
+        .collect(Collectors.groupingBy(Funcionario::getFuncao));
 
     System.out.println();
 
@@ -74,8 +74,8 @@ public class Principal {
     System.out.println(
         "3.9");
 
-    Comparator<Funcionario> comparator =
-        (func1, func2) -> func1.getDataNascimento().compareTo(func2.getDataNascimento());
+    Comparator<Funcionario> comparator = (func1, func2) -> func1.getDataNascimento()
+        .compareTo(func2.getDataNascimento());
 
     Collections.sort(funcionarios, comparator);
 
@@ -85,20 +85,28 @@ public class Principal {
 
     System.out.println();
 
-    List<Funcionario> orderedList =
-        funcionarios.stream().sorted((arg0, arg1) -> arg0.getNome().compareTo(arg1.getNome()))
-            .collect(Collectors.toList());
+    List<Funcionario> orderedList = funcionarios.stream()
+        .sorted((arg0, arg1) -> arg0.getNome().compareTo(arg1.getNome()))
+        .collect(Collectors.toList());
 
     System.out.println("3.10");
     printEmployees(orderedList);
 
     System.out.println();
 
-    BigDecimal salariesSum =
-        funcionarios.stream().map(Funcionario::getSalario).reduce(BigDecimal.ZERO, BigDecimal::add);
+    BigDecimal salariesSum = funcionarios.stream().map(Funcionario::getSalario).reduce(BigDecimal.ZERO,
+        BigDecimal::add);
 
     System.out.println("3.11");
     System.out.println(Funcionario.formatSalary(salariesSum) + "\n");
+
+    System.out.println(
+        "3.12");
+
+    for (Funcionario funcionario : funcionarios) {
+      System.out.println(funcionario.getNome() + " recebe "
+          + funcionario.basicSalaries(minimumWage) + " salário(s) mínimo(s).");
+    }
   }
 
   public static List<Funcionario> removeEmployee(List<Funcionario> funcionarios, String nome) {

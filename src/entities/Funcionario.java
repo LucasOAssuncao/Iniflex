@@ -37,4 +37,14 @@ public class Funcionario extends Pessoa {
     public static String formatSalary(BigDecimal salario) {
         return NumberFormat.getCurrencyInstance().format(salario);
     }
+
+    public int basicSalaries(BigDecimal arg) {
+        return salario.divideToIntegralValue(arg).intValue();
+    }
+
+    @Override
+    public String toString() {
+        return "[ " + super.toString() + ", Salário: " + formatSalary(salario) + ", Função: " + funcao
+                + "]";
+    }
 }
