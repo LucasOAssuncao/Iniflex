@@ -28,5 +28,28 @@ public class Principal {
     System.out.println(
         "3.1");
     System.out.println(funcionarios + "\n");
+
+    removeEmployee(funcionarios, "João");
+    System.out.println();
+
+    printEmployees(funcionarios);
+    System.out.println();
+  }
+
+  public static List<Funcionario> removeEmployee(List<Funcionario> funcionarios, String nome) {
+    List<Funcionario> novaLista = new ArrayList<>(funcionarios);
+    novaLista.removeIf(s -> s.getNome().equals(nome));
+
+    System.out.println("3.2");
+    System.out.println(novaLista);
+
+    return novaLista;
+  }
+
+  public static void printEmployees(List<Funcionario> funcionarios) {
+    System.out.println("3.3");
+    for (Funcionario funcionario : funcionarios) {
+      System.out.println(funcionario);
+    }
   }
 }
